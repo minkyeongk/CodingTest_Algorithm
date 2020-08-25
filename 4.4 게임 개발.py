@@ -19,8 +19,6 @@ for i in range(n):
     for j in range(m):
         table[i][j] = [table[i][j], 0]
 
-print(table)
-
 spin = 0
 while True:
     if spin == 4:
