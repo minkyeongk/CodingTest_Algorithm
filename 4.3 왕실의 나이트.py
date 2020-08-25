@@ -1,9 +1,12 @@
 # 실전 4.3 왕실의 나이트
 
-# 입력 현재 나이트의 좌표
-# 출력 나이트가 이동할 수 있는 경우의 수
+# 입력: 현재 나이트의 좌표
+# 출력: 나이트가 이동할 수 있는 경우의 수
 
+# 입력
 pos = input()
+
+# ver 1
 posx = ord(pos[0])
 posy = int(pos[1])
 
@@ -37,3 +40,21 @@ for n in v:
         cnt += 1
 
 print(cnt)
+
+# ver 2
+col = ord(pos[0])
+row = int(pos[1])
+cnt = 0
+
+go = [(2, -1), (2, 1), (-2, -1), (-2, 1), (-1, 2), (-1, -2), (1, 2), (1, -2)]
+
+for tup in go:
+    col_mv = col + tup[0]
+    row_mv = row + tup[1]
+
+    if ord('a') <= col_mv <= ord('h') and 1 <= row_mv <= 8:
+        cnt += 1
+
+print(cnt)
+
+# 접근 방식은 비슷, 메모리를 더 쓰느냐의 차이이고 효율성을 높이고자 했지만 별반 다르지 않을 듯
