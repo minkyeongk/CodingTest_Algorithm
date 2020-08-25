@@ -38,6 +38,7 @@ while True:
 
     mv_idx = dr.index(nowD) - 1
     mvX, mvY = nowX + dx[mv_idx], nowY + dx[mv_idx]
+    nowD = dr[mv_idx]
 
     if table[mvX][mvY][0] == 0 and table[mvX][mvY][1] == 0:
         nowX = mvX
