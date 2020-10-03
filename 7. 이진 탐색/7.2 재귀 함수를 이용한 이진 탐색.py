@@ -5,6 +5,8 @@ def binary_search(start, end, find, arr):
     mid = (start+end)//2
     if find == arr[mid]:
         return mid+1
+    # start, end, mid가 모두 같아지는 지점에 답이 있을 수 있기 때문에
+    # 찾고자 하는 원소인지 부터 확인하고 범위 체크
     elif start >= end:
         return None
     elif find < arr[mid]:
