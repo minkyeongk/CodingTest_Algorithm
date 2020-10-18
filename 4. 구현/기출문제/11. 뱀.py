@@ -31,7 +31,7 @@ bh = 0
 time = 0
 while True:
     time += 1           # 시간 이동
-    if time-1 in X:       # 방향 변환, x초 이후에 방향 변환이기 때문에 > 쳌,와 방향변환을 아예 뒤로 빼주는게 나았을 수도
+    if time-1 in X:       # 방향 변환, x초 이후에 방향 변환이기 때문에 > 체크와 방향변환을 아예 뒤로 빼주는게 나았을 수도
         idx = X.index(time-1)
         if C[idx] == 'L':
             bh = bh-1 if 0 <= bh-1 else 3
