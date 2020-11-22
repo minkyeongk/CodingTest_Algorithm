@@ -1,0 +1,10 @@
+# 27. 정렬된 배열에서 특정 수의 개수 구하기
+# bisect 알면 쉽게 풀 수 있는 문제
+
+from bisect import bisect_left, bisect_right
+
+n, x = map(int, input().split())
+arr = list(map(int, input().split()))
+result = bisect_right(arr, x) - bisect_left(arr, x)
+
+print(result if result != 0 else -1)
