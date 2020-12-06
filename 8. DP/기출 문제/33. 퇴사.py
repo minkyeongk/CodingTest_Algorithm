@@ -1,28 +1,33 @@
 # 33. 퇴사
+# dp는 문제 풀이 구조에 대한 아이디어 내는게 쉽지 않은 듯
+
+# 기존의 최대값과 본인이 포함되었을 때의 값 중 큰 값을 선택
+# 남은 상담 시간이 이후 일정에 영향을 줌
+# 앞에서부터 풀어나가면 선택에 따라 branch가 너무 퍼져 나감 > 뒤에서부터 접근한다면?
 
 n = int(input())
-t = []      # 시간
-p = []      # 금액
-dp = [0] * (n + 1)
-max_value = 0
-
+# 입력을 어떤 식으로 저장해야 접근이 편해질지: 이중리스트 or 리스트 2개
+# t가 일정 날짜와 연산되어야 함 > 이중 리스ㅌ면 매번 접근하기에 어려움
+t = []
+p = []  # 반복문으로 리스트 초기화 하는 방법, 1차원 2차원 둘다 까먹지 말기
+dp = [0] * (n+1)   # 그 시점(끝나는 시점이 아니라 그 때 확인 가능한 경우중 최대)의 최대 금액: 앞으로 가면서 갱신될거니까 매 시점마다의 최대를 저장해야 함
 for _ in range(n):
-    x, y = map(int, input().split())
-    t.append(x)
-    p.append(y)
+    ti, pi = map(int, input().split())
+    t.append(ti)
+    p.append(pi)
 
-# 리스트를 뒤에서부터 거꾸로 확인
-for i in range(n - 1, -1, -1):
-    time = t[i] + i
-    # 상담이 기간 안에 끝나는 경우
-    if time <= n:
-        dp[i] = max(p[i] + dp[time], max_value)
-        max_value = dp[i]
-    # 상담이 기간을 벗어나는 경우
-    else:
-        dp[i] = max_value
+max_val = 0
+for i in range(n-1, -1, -1):
+    end_time = i+t[i]
+    if end_time > n:
+        dp[i] = max_val # 기간을 벗어나도 그 전까지 가능했던 경우는 유지되니까
+        continue
+    # 뒤에서부터 가능한 경우를 쌓아가니까 앞이 더 크지
+    # end_time은 n까지는 가능 > 그래서 dp 초기화시 n+1만큼 0을 넣어준거
+    dp[i] = max(p[i]+dp[end_time], max_val) # 지금꺼 하고 끝난 이후에 하는 걸 더하는 경우, 지금거 기간 관련없이 이전까지의 max
+    max_val = dp[i]     # 구하고자 하는 것 최대 금액, dp는 뒤에서 부터의 누적 금액을 담는 테이블, 담는 내용물의 종류는 p와 동일
 
-print(max_value)
+print(max_val)
 
 
 
