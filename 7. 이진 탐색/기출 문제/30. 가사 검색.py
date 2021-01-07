@@ -23,7 +23,6 @@ def find_left(q_word, start, end):
 
 def solution(words, queries):
     answer = [0] * len(queries)
-
     by_len = dict()
     for w in words:
         l = len(w)

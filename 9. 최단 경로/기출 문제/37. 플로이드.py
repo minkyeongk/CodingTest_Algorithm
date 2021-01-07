@@ -19,4 +19,5 @@ for i in range(1, n+1):
     for j in range(1, n+1):
         chk = table[i][j] if table[i][j] != 1e9 else 0
         print(chk, end=' ')     # end 처리 까먹으면 안됨
-    print()     # 여기서 줄바꿈 출력해주면 불바꿈 두번 된다, print가 기본적으로 줄바꿈을 지원하기 때문
+    print()     # 여기서 줄바꿈 출력해주면 줄바꿈 두번 된다, print가 기본적으로 줄바꿈을 지원하기 때문
+

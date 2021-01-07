@@ -1,4 +1,6 @@
 # 39. 화성 탐사
+# 방향 벡터 넣어서 다시 하기
+
 t = int(input())
 for _ in range(t):
     n = int(input())
